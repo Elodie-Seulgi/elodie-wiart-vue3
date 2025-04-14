@@ -1,47 +1,37 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
+<script setup></script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+   <div id="page-wrapper">
+    <div id="header-wrapper">
+      <div class="container">
+        <header id="header">
+          <div class="inner">
+            <h1><router-link to="/" id="logo">Magic Duck 🦆</router-link></h1>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+            <nav id="nav">
+              <ul>
+                <li><router-link to="/">Home</router-link></li>
+                <li><router-link to="/list">Ma Collection</router-link></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+
+    <router-view />
+
+    <div id="footer-wrapper">
+      <footer id="footer" class="container">
+        <div class="col-12">
+          <div id="copyright">
+            <ul class="menu">
+              <li>&copy; Canard. All rights reserved</li>
+              <li>Design: Elodie WIART</li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
+  </div>
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
