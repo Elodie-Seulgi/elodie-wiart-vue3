@@ -6,8 +6,15 @@ const route = useRoute()
 
 const card = ref(null)
 
-onBeforeMount(async () => { })
-
+onBeforeMount(async () => {
+	try {
+		const response = await fetch(`https://api.magicthegathering.io/v1/cards/${route.params.cardId}`)
+		const data = await response.json()
+		card.value = data.card
+	} catch (error) {
+		console.error(error)
+	}
+})
 </script>
 
 <template>
@@ -20,15 +27,15 @@ onBeforeMount(async () => { })
 							<div id="content">
 
 								<!-- Content -->
-
 								<article>
 									<header class="major">
-										<h2>Card Title</h2>
-										<p>artist</p>
+										<h2>{{ card.name }} 🦆</h2>
+										<p>{{ card.artist }}</p>
 									</header>
 
 									<div class="image featured centered">
-										<div id="spinner">
+										<img :src="card.imageUrl" :alt="card.name" />
+										<!-- <div id="spinner">
 											<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62"
 												viewBox="0 0 24 24">
 												<path fill="currentColor"
@@ -38,12 +45,10 @@ onBeforeMount(async () => { })
 														values="0 12 12;360 12 12" />
 												</path>
 											</svg>
-										</div>
-										<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=130550&type=card"
-											alt="" />
+										</div> -->
 									</div>
 
-									<p>Card Text</p>
+									<p>{{ card.text }}</p>
 								</article>
 
 							</div>

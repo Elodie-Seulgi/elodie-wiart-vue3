@@ -7,13 +7,12 @@ onMounted(async () => {
     try {
         const response = await fetch('https://api.magicthegathering.io/v1/cards?pageSize=3')
         const data = await response.json()
-        console.log(data.cards)
+        // console.log(data.cards)
         cards.value = data.cards
     } catch (error) {
         console.error(error)
     }
 })
-
 </script>
 
 <template>
