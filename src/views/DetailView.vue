@@ -6,6 +6,8 @@ const route = useRoute()
 
 const card = ref(null)
 
+onBeforeMount(async () => { })
+
 </script>
 
 <template>
